@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta id="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta charset="utf-8">
+  <title>WebApp</title>
+  <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> -->
+  <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"> -->
+  <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"> -->
+  <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"> -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="Js/jquery.js"></script>
+  <script src="Js/Js.js"></script>
+  <script src="Js/funktionalität.js"></script>
+  
+  <!-- <link rel="stylesheet" href="css/bootstrap.css"> -->
+  <link rel="stylesheet" href="Content/css/bootstrap.css">
+  <link rel="stylesheet" href="Content/css/bootstrap-theme.min.css">
+  <link rel="stylesheet" href="Content/css/bootstrap-theme.css">
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body onload="nameMensa()" >
+
+  <!-- WE CAN CHOSE A MENSA HIER-->
+  <div id="container1" class="modal" >
+    <!-- <span class="col-md-4 col-xs-12 col-xs-1"></span> -->
+    <!-- class="col-md-4 col-xs-12 col-xs-10" onsubmit="menu()" -->
+    <form id="test" >
+      <span class="col-xs-2 col-lg-4"></span>
+    <div id="mensa_Location" class="modal-content animate col-xs-8 col-lg-4">
+      <div class="row">
+      <label for="chosenMensa" class="col-xs-12">Wählen Sie eine Mensa aus!</label>
+      <select id="choseMensa" class="form-control input-lg col-xs-12"></select>
+    </div>
+      <div class="row">
+        <div class="col-xs-12">
+        <label for="entfernung"  class="text">Entfernung :<input type="text" class="form-control" id="entfernung" placeholder="Entfernung in Km" required></label>
+      </div>
+      </div>
+      <div class="row btn-toolbar ">
+        <br>
+      <button type="button" class="btn btn-primary selectBtn col-xs-2">Select</button>
+      <div class="col-xs-5"></div>
+      <button type="button" class="btn btn-primary logbtn col-xs-2 " >OK</button>
+      <button type="button" onclick="document.getElementById('container1').style.display='none'"class="btn btn-primary cancelbtn col-xs-2 ">Cancel</button>
+    </div>
+    </div>
+    <span class="col-xs-2 col-lg-4"></span>
+  </form>
+  <!-- <span class="col-md-4 col-xs-12 col-xs-1 "></span> -->
+  </div>
+
+  <!-- NAV BAR AND MENU-->
+  <div>
+    <nav class="navbar navbar-inverse">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">WebApp</a>
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="#">Home</a></li>
+            <li><a href="Settings.html">Settings</a></li>
+            <li><a  onclick="document.getElementById('container1').style.display='block';">Mensa</a></li>
+            <li><button type="button" class="btn btn-default btn-lg">
+              <span class="glyphicon glyphicon-star"></span> Star
+            </button></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div id="title" >Welcome to our Mensa</div>
+  <!-- <span class="col-xs-1"> </span> -->
+  <div class="Menu  col-xs-12" id="menu" style="display: none;">
+    <div class="row">
+        <span class="calIcon col-xs-1"><i class="glyphicon glyphicon-calendar"></i> </span> 
+        <p id="showDay" class="dateRow col-xs-10"></p>
+      </div>
+        <button type="submit" class="btn leftArrow col-xs-4 btn-next-previous" onclick="previous()">Previous <i class="glyphicon glyphicon-chevron-left"></i></button>
+        <button type="submit" class="btn rightArrow  col-xs-4 btn-next-previous" onclick="next()">Next <i class="glyphicon glyphicon-chevron-right"></i></button>
+        <button class="btn filterBtn col-xs-4" onclick="clickFilter()"><i class="glyphicon glyphicon-filter">Filter</i></button>
+    <!-- </div> -->
+    <!-- </span> -->
+
+
+    <div class="American Dressing col-xs-12" id="listFilter"  style="display:none; border:1px solid black; padding: 20px 20px;">
+        <form action="" method="POST"></form>
+ 
+        <div class="container-fluid" style="font-size:11px">
+          
+          <div class="row row-top-percent-1 tainted" >
+            <div class="col-md-4 col-xs-12">
+        
+        
+ 
+            <label class="checkbox-inline checkbox-bootstrap " for="gewachst"> <input type="checkbox" class="itemkennz" onclick="return checkedBox(this)"  value="5" id="gewachst" > (5)gewachst  </label>
+          </div>
+          <div class="col-md-4 col-xs-12">
+            <label class="checkbox-inline checkbox-bootstrap  " for="Erdnüsse"> <input type="checkbox" class="itemkennz"  onclick="return checkedBox(this)"  value="25" id="Erdnüsse" > (25)Erdnüsse</label>
+          </div>
+          <div class="col-md-4 col-xs-12">
+
+            <label class="checkbox-inline checkbox-bootstrap " > <input type="checkbox" class="itemkennz"  onclick="return checkedBox(this)"  value="36" id="Hefe" >(36)Hefe</label>
+            </div>
+          </div>
+            <div class="row row-top-percent-1 tainted" parent-lookin=".row" parent-selector=".item-kultur">
+              <div class="col-md-4 col-xs-12">
+            <label class="checkbox-inline checkbox-bootstrap " for="Süßungsmittel"> <input type="checkbox" class="itemkennz" onclick="return checkedBox(this)"  value="13" id="Süßungsmittel">(13)Süßungsmittel</label>
+              </div>
+              <div class="col-md-4 col-xs-12">
+            <label class="checkbox-inline checkbox-bootstrap " for="Weizen"><input type="checkbox" class="itemkennz"  onclick="return checkedBox(this)"  value="21a" id="Weizen" >(21a)Weizen</label>
+          </div>
+          <div class="col-md-4 col-xs-12">
+            <label class="checkbox-inline checkbox-bootstrap " for="Sellerie"><input type="checkbox" class="itemkennz" onclick="return checkedBox(this)" value="27" id="Sellerie" >(27)Sellerie</label>
+          </div>
+            </div>
+            <div class="row row-top-percent-1 tainted" parent-lookin=".row" parent-selector=".item-kultur">
+              <div class="col-md-4 col-xs-12">
+                <label class="checkbox-inline checkbox-bootstrap " for="Soja"><input type="checkbox" class="itemkennz" onclick="return checkedBox(this)" value="28" id="Soja" >(28)Soja</label>
+              </div>
+              <div class="col-md-4 col-xs-12">
+                <label class="checkbox-inline checkbox-bootstrap " > <input type="checkbox"  class= "itemkennz" onclick="return checkedBox(this)"  value="14" id="mit zum Teil fein zerkleinertem Fleischanteil">(14)mit zum Teil fein zerkleinertem Fleischanteil.</label> 
+              </div>
+              <div class="col-md-4 col-xs-12">
+                <label class= "checkbox-inline checkbox-bootstrap" for="Antioxidationsmittel"><input type="checkbox"  class= "itemkennz" onclick="return checkedBox(this)"  value="7" id="Antioxidationsmittel" >(7)Antioxidationsmittel.</label>
+              </div>
+            </div>
+
+            <div class="row row-top-percent-1 tainted" parent-lookin=".row" parent-selector=".item-kultur">
+              <div class="col-md-4 col-xs-12">
+                <label class= "checkbox-inline checkbox-bootstrap" ><input type="checkbox" class="itemkennz" onclick="return checkedBox(this)" value="30" id="Milch und Milchprodukte (inkl. Laktose)">(30)Milch und Milchprodukte (inkl. Laktose)</label>
+              </div>
+              <div class="col-md-4 col-xs-12">
+              <label  class= "checkbox-inline checkbox-bootstrap" for="konserviert"><input type="checkbox"  class= "itemkennz" onclick="return checkedBox(this)" value="6" id="konserviert" >(6)konserviert</label>
+              </div>
+              <div class="col-md-4 col-xs-12">
+              <label class= "checkbox-inline checkbox-bootstrap" for="Walnuss"><input type="checkbox" class="itemkennz" onclick="return checkedBox(this)" value="26c" id="Walnuss" >(26c)Walnuss</label>
+              </div>
+            </div>
+            <div class="row row-top-percent-1 tainted" parent-lookin=".row" parent-selector=".item-kultur">
+              <div class="col-md-4 col-xs-12">
+              <label class= "checkbox-inline checkbox-bootstrap" for="Senf"><input type="checkbox" class= "itemkennz" onclick="return checkedBox(this)"  value="19" id="Senf">(19)Senf</label>
+              </div>
+              <div class="col-md-4 col-xs-12">
+              <label class= "checkbox-inline checkbox-bootstrap" ><input type="checkbox" class= "itemkennz" onclick="return checkedBox(this)"  value="32" id="Schwefeldioxid und Sulfide">(32)Schwefeldioxid und Sulfide</label>
+              </div>
+              <div class="col-md-4 col-xs-12">
+                <label class= "checkbox-inline checkbox-bootstrap" for="Nitritpökelsalz"><input type="checkbox"  class= "itemkennz" onclick="return checkedBox(this)" value="35" id="Nitritpökelsalz" > (35)Nitritpökelsalz</label>
+              </div>
+            </div>
+          
+          <div class="row row-top-percent-1 tainted" parent-lookin=".row" parent-selector=".item-kultur">
+            <div class="col-md-4 col-xs-12">
+<label class= "checkbox-inline checkbox-bootstrap" for="Eier"><input type="checkbox" class ="itemkennz" onclick="return checkedBox(this)" value="23" id="Eier">(23)Eier</label>
+            </div>
+
+            <div class="col-md-4 col-xs-12">
+            <label class= "checkbox-inline checkbox-bootstrap" for="Haselnuss"><input type="checkbox" class ="itemkennz" onclick="return checkedBox(this)" value="26b" id="Haselnuss">(26b)Haselnuss</label>
+            </div>
+            <div class="col-md-4 col-xs-12">
+            <label class= "checkbox-inline checkbox-bootstrap" for="Gerste"><input type="checkbox" class ="itemkennz" onclick="return checkedBox(this)" value="21c" id="Gerste">(21c)Gerste</label>
+            </div>
+          </div>
+
+
+          <div class="row row-top-percent-1 tainted" parent-lookin=".row" parent-selector=".item-kultur">
+
+ <div class="col-md-4 col-xs-12">
+            <label class= "checkbox-inline checkbox-bootstrap" for="Farbstoff"><input type="checkbox" class ="itemkennz" onclick="return checkedBox(this)" value="8" id="Farbstoff">(8)Farbstoff</label>
+ </div>
+ <div class="col-md-4 col-xs-12">  
+
+  <label class= "checkbox-inline checkbox-bootstrap" for="Fisch"><input type="checkbox" class ="itemkennz" onclick="return checkedBox(this)" value="24" id="Fisch">(24)Fisch</label>
+ </div>
+ <div class="col-md-4 col-xs-12"> 
+ <label class= "checkbox-inline checkbox-bootstrap" for="Weichtiere"><input type="checkbox" class ="itemkennz" onclick="return checkedBox(this)" value="34" id="Weichtiere">(34)Weichtiere</label>
+ </div>
+          </div>
+
+          <div class="row row-top-percent-1 tainted" parent-lookin=".row" parent-selector=".item-kultur"> 
+            <div class="col-md-4 col-xs-12">
+ <label class= "checkbox-inline checkbox-bootstrap" for="Phosphat"><input type="checkbox" class ="itemkennz" onclick="return checkedBox(this)" value="9" id="Phosphat">(9)Phosphat</label>
+            </div>
+            <div class="col-md-4 col-xs-12">
+ <label class= "checkbox-inline checkbox-bootstrap" for="Mandeln"><input type="checkbox" class ="itemkennz" onclick="return checkedBox(this)" value="26a" id="Mandeln">(26a)Mandeln</label>
+            </div>
+            <div class="col-md-4 col-xs-12">
+ <label class= "checkbox-inline checkbox-bootstrap" for="Sesam"><input type="checkbox" class ="itemkennz" onclick="return checkedBox(this)" value="31" id="Sesam">(31)Sesam</label>
+            </div>
+          </div>
+            <div class="row row-top-percent-1 tainted" parent-lookin=".row" parent-selector=".item-kultur"> 
+              <div class="col-md-4 col-xs-12">
+ <label class= "checkbox-inline checkbox-bootstrap" for="koffeinhaltig"><input type="checkbox" class ="itemkennz" onclick="return checkedBox(this)" value="16" id="koffeinhaltig">(16)koffeinhaltig</label>
+              </div>
+              <div class="col-md-4 col-xs-12">
+ <label class= "checkbox-inline checkbox-bootstrap" for="Dinkel"><input type="checkbox" class ="itemkennz" onclick="return checkedBox(this)" value="21e" id="Dinkel">(21e)Dinkel</label>
+              </div>
+              <div class="col-md-4 col-xs-12">
+ <label class= "checkbox-inline checkbox-bootstrap" for="Roggen"><input type="checkbox" class ="itemkennz" onclick="return checkedBox(this)" value="21b" id="Roggen">(21b)Roggen</label>
+              </div>
+            </div>
+
+            <div class="row row-top-percent-1 tainted" parent-lookin=".row" parent-selector=".item-kultur"> 
+
+              <div class="col-md-4 col-xs-12">
+ <label class= "checkbox-inline checkbox-bootstrap" ><input type="checkbox" class ="itemkennz" onclick="return checkedBox(this)" value="21d" id="Hafer">(21d)Hafer</label>
+              </div>
+              <div class="col-md-4 col-xs-12">
+ <label class= "checkbox-inline checkbox-bootstrap" ><input type="checkbox" class ="itemkennz" onclick="return checkedBox(this)" value="12" id="enthält eine Phenylalaninquelle">(12)enthält eine Phenylalaninquelle</label>
+              </div>
+              <div class="col-md-4 col-xs-12">
+ <label class= "checkbox-inline checkbox-bootstrap" ><input type="checkbox" class ="itemkennz" onclick="return checkedBox(this)" value="20" id="kann abführend wirken">(20)kann abführend wirken</label>
+              </div>
+            </div>
+
+            <div class="row row-top-percent-1 tainted" parent-lookin=".row" parent-selector=".item-kultur"> 
+
+
+              <div class="col-md-4 col-xs-12">
+
+ <label class= "checkbox-inline checkbox-bootstrap" ><input type="checkbox" class ="itemkennz" onclick="return checkedBox(this)" value="21" id="GlutenhaltigesGetreide">(21)Glutenhaltiges Getreide</label>
+              </div>
+              <div class="col-md-4 col-xs-12">
+ <label class= "checkbox-inline checkbox-bootstrap" ><input type="checkbox" class ="itemkennz" onclick="return checkedBox(this)" value="21f" id="Kamut">(21f)Kamut</label>
+              </div>
+              <div class="col-md-4 col-xs-12">
+ <label class= "checkbox-inline checkbox-bootstrap" ><input type="checkbox" class ="itemkennz" onclick="return checkedBox(this)" value="26d" id="Kaschunuss">(26d)Kaschunuss</label>
+              </div>
+            </div>
+              <div class="row row-top-percent-1 tainted" parent-lookin=".row" parent-selector=".item-kultur"> 
+
+                <div class="col-md-4 col-xs-12">
+ <label class= "checkbox-inline checkbox-bootstrap" for="Pistazie"><input type="checkbox" class ="itemkennz" onclick="return checkedBox(this)" value="26g" id="Pistazie">(26g)Pistazie</label>
+                </div>
+                <div class="col-md-4 col-xs-12">
+ <label class= "checkbox-inline checkbox-bootstrap" for="Alkohol"><input type="checkbox" class ="itemkennz" onclick="return checkedBox(this)" value="3" id="Alkohol">(3)Alkohol</label>
+                </div>
+                <div class="col-md-4 col-xs-12">
+ <label class= "checkbox-inline checkbox-bootstrap" for="chininhaltig"><input type="checkbox" class ="itemkennz" onclick="return checkedBox(this)" value="17" id="chininhaltig">(17)chininhaltig</label>
+                </div>
+              </div>
+
+              <div class="row row-top-percent-1 tainted"> 
+
+                <div class="col-md-4 col-xs-12">
+ <label class= "checkbox-inline checkbox-bootstrap" for="Krebstiere"><input type="checkbox" class ="itemkennz" onclick="return checkedBox(this)" value="22" id="Krebstiere">(22)Krebstiere</label>
+                </div>
+                <div class="col-md-4 col-xs-12">
+ <label class= "checkbox-inline checkbox-bootstrap" for="Pacannuss"><input type="checkbox" class ="itemkennz" onclick="return checkedBox(this)" value="26e" id="Pacannuss">(26e)Pacannuss</label>
+                </div>
+                <div class="col-md-4 col-xs-12">
+ <label class= "checkbox-inline checkbox-bootstrap" ><input type="checkbox" class ="itemkennz" onclick="return checkedBox(this)" value="26h" id="Macadamia">(26h)Macadamia</label>
+                </div>
+              </div>
+
+              <div class="row row-top-percent-1 tainted" >
+
+                <div class="col-md-4 col-xs-12">
+ <label class= "checkbox-inline checkbox-bootstrap" ><input type="checkbox" class ="itemkennz" onclick="return checkedBox(this)" value="4" id="Geschmacksverstärker">(4)Geschmacksverstärker</label>
+                </div>
+                <div class="col-md-4 col-xs-12">
+ <label class= "checkbox-inline checkbox-bootstrap" for="geschwärzt"><input type="checkbox" class ="itemkennz" onclick="return checkedBox(this)" value="10" id="geschwärzt"> (10)geschwärzt</label>
+                </div>
+                <div class="col-md-4 col-xs-12">
+ <label class= "checkbox-inline checkbox-bootstrap" for="geschwefelt"><input type="checkbox" class ="itemkennz" onclick="return checkedBox(this)" value="19" id="geschwefelt">(19)geschwefelt</label>
+                </div>
+                <div class="col-md-4 col-xs-12">
+       <label class= "checkbox-inline checkbox-bootstrap"><input type="checkbox" class ="checkBoxes col-md-4 col-xs-12" onclick="return checkedBox(this)" value="2" id="Schweinefleisch bzw. mit Gelatine vom Schwein">(2)Schweinefleisch bzw. mit Gelatine vom Schwein</label>
+                </div>    
+      </div>
+                <div class="row row-top-percent-1 tainted" parent-lookin=".row" parent-selector=".item-kultur">
+
+
+                  <div class="col-md-4 col-xs-12">
+ <label class= "checkbox-inline checkbox-bootstrap" ><input type="checkbox" class ="itemkennz" onclick="return checkedBox(this)" value="26" id="Schalenfrüchte">(26)Schalenfrüchte</label>
+                  </div>
+                  <div class="col-md-4 col-xs-12">
+ <label class= "checkbox-inline checkbox-bootstrap" for="Paranuss"><input type="checkbox" class ="itemkennz" onclick="return checkedBox(this)" value="26f" id="Paranuss">(26f)Paranuss</label>
+                  </div>
+                  <div class="col-md-4 col-xs-12">
+ <label class= "checkbox-inline checkbox-bootstrap" for="Lupine"><input type="checkbox" class ="itemkennz" onclick="return checkedBox(this)" value="33" id="Lupine">(33)Lupine</label>
+                  </div>
+                </div>
+</div>
+        
+
+  
+    
+    </div>
+  
+  
+
+
+    
+    <div id="menuList" >
+      <div class="filter">
+          
+      </div>
+      <div id="Essen-Liste">
+        <!-- <div class="essenType col-xs-12">Essen</div> -->
+      </div>
+      <div id="Aktionen-Liste">
+        <!-- <div class="essenType col-xs-12">Aktionen</div> -->
+      </div>
+      <div id="Salate-Liste">
+        <!-- <div class="essenType col-xs-12">Salate</div> -->
+      </div>
+      <div id="Suppen-Liste">
+        <!-- <div class="essenType col-xs-12">Suppen</div> -->
+      </div>
+      <div id="Beilagen-Liste">
+        <!-- <div class="essenType col-xs-12">Beilagen</div> -->
+      </div>
+      <div id="Desserts-Liste">
+        <!-- <div class="essenType col-xs-12">Desserts</div> -->
+      </div>
+    </div>
+    
+
+   
+  </div>
+  <!-- <span class="col-xs-1"> </span> -->
+</div>
+</body>
+</html>

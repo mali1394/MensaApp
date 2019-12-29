@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <meta charset="utf-8">
+  <title>WebApp</title>
+  <link rel="stylesheet" href="Content/css/bootstrap.css">
+  <link rel="stylesheet" href="Content/css/bootstrap-theme.min.css">
+  <link rel="stylesheet" href="Content/css/bootstrap-theme.css">
+  <link rel="stylesheet" href="css/style.css" />
+  <script src="Js/jquery.js"></script>
+  <script src="Js/Js.js"></script>
+</head>
+
+<body >
+
+  <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#">WebApp</a>
+      </div>
+      <div class="collapse navbar-collapse" id="myNavbar">
+        <ul class="nav navbar-nav">
+          <li class="active"><a href="Index.html">Home</a></li>
+          <li><a href="Settings.html">Settings</a></li>
+          <li><a onclick="document.getElementById('container1').style.display='block';">Mensa</a></li>
+          <li><button type="button" class="btn btn-default btn-lg">
+            <span class="glyphicon glyphicon-star"></span> Star
+          </button></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <span class="col-xs-2"></span>
+ <div class="Setting col-xs-8">
+    <form  onsubmit="getStatus()">
+        <div>Please select your status:</div>
+          <input type="radio" class="student radioBtn" name="status" value="students"> Student<br>
+          <input type="radio" class="employee radioBtn" name="status" value="employees"> Employee<br>
+          <input type="radio" class="pupils radioBtn" name="status" value="pupils"> Pupils<br>
+          <input type="radio" class="others radioBtn" name="status" value="others"> Other<br>  
+      
+          <input  class="btn btn-primary" type="submit" value="button" >
+        </form>
+      </div>
+      <span class="col-xs-2"></span>
+</body>
